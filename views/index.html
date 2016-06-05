@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Movies List</title>
+
+    <meta name="description" content="Source code generated using layoutit.com">
+    <meta name="author" content="LayoutIt!">
+
+    <link href="stylesheets/bootstrap.min.css" rel="stylesheet">
+    <link href="stylesheets/style.css" rel="stylesheet">
+
+  </head>
+  <body>
+
+    <div class="container-fluid">
+
+
+	<div class="row">
+
+		<div class="col-md-12">
+			<div class="row">
+        <div class="page-header">
+          <h1>
+            <center>Movies To Watch Before <span style="color: firebrick;">YOU WILL DIE</span></center>
+          </h1>
+        </div>
+
+				<div class="col-md-4">
+					<img alt="Movie Poster" id="movieImage" src="" class="img-responsive">
+				</div>
+				<div class="col-md-8">
+					<div class="list-group">
+						<div class="list-group-item" id="list-group-item">
+
+              <ul>
+                <li id="name">
+
+                </li>
+
+
+                <li id="year">
+                </li>
+
+                <li id="actors">
+                </li>
+
+                <li id="director">
+                </li>
+
+                <li id="plot">
+                </li>
+
+                <li>
+
+                  <ul id="line">
+                    <li id="release">
+                    </li>
+
+                    <li id="rating">
+                    </li>
+
+                    <li id="awards">
+                    </li>
+                  </ul>
+
+                </li>
+              </ul>
+						</div>
+					</div>
+          <div class="row">
+          <!-- row start -->
+
+				<!-- col-mod-6 start -->
+            <!-- Modal for Update -->
+							 <a id="updateButton" href="#updateForm" role="button" class="btn btn-warning" data-toggle="modal"> Update <em class="glyphicon glyphicon-refresh"></em></a>
+
+							<div class="modal fade" id="updateForm" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+
+                    <div class="modal-header">
+                      <button class="close" data-dismiss="modal">&times; </button>
+                      <h2 class="modal-title">Update Movie Details</h2>
+                    </div> <!-- End Modal Header  -->
+
+                    <div class="modal-body">
+
+                      <form class="form-horizontal" method="post" name="updForm" action="crudOpt/update" onsubmit="return validate_update_form();">
+                        <div class="form-group">
+                          <label class="col-lg-2 control-label" for="#updateTitle">Title</label>
+                          <div class="col-lg-10">
+                              <input class="form-control" id="updateTitle" name="Title" placeholder="Title" type="text" readonly />
+                              <br />
+                          </div>
+<!--
+                          <label class="col-lg-2 control-label" for="#updatePlot">Plot</label>
+                          <div class="col-lg-10">
+                            <textarea class="form-control" id="updatePlot" name="updPlot" placeholder="Plot"></textarea>
+                            <br />
+                          </div>
+-->
+
+                          <label class="col-lg-2 control-label" for="#updateRating">Rating</label>
+                          <div class="col-lg-10">
+                            <input class="form-control" id="updateRating" name="updRating" placeholder="Rating" type="text" />
+                            <br />
+                          </div>
+
+                          <label class="col-lg-2 control-label" for="#updateAwards">Awards</label>
+                          <div class="col-lg-10">
+                            <input class="form-control" id="updateAwards" name="updAwards" placeholder="Awards &amp; Nominations" type="text" />
+                            <br />
+                          </div>
+
+                          <label class="col-lg-2 control-label" for="#updateImage">Image</label>
+                          <div class="col-lg-10">
+                               <input type="file"  class="form-control" id="updateImage" name="imageURL" />
+                               <br />
+                          </div>
+
+                          <label class="col-lg-8 control-label" ></label>
+                          <div class="col-lg-4">
+                            <input class="btn btn-primary" type="submit" value="Submit" name="submit" />
+                            <br />
+                          </div>
+                        </div><!-- Form Group -->
+                      </form>
+                    </div> <!-- End Modal Body -->
+
+                    <div class="modal-footer">
+                      <!-- <button class="btn btn-default"  type="button">Submit</button> -->
+                      <button class="btn btn-default" data-dismiss="modal" type="button">Close</button>
+                    </div> <!-- End Modal Footer -->
+
+									</div><!-- end Modal Content -->
+
+								</div><!-- end Modal Dialog -->
+
+							</div><!-- end updateForm Modal -->
+
+						<!-- col-mod-6 end -->
+
+            <!-- col-mod-6 start -->
+
+
+            <!-- Modal for Delete -->
+							 <a id="deleteButton" href="#deleteForm" role="button" class="btn btn-danger" data-toggle="modal"> Delete <em class="glyphicon glyphicon-remove-circle"></em></a>
+
+                     <div class="modal fade" id="deleteForm">
+                         <div class="modal-dialog">
+                           <div class="modal-content">
+                               <div class="modal-header">
+                                     <button class="close" data-dismiss="modal">&times; </button>
+                                     <h2 class="modal-title">Delete Movie Details</h2>
+                               </div> <!-- End Modal Header  -->
+
+                               <div class="modal-body">
+
+                                     <form class="form-horizontal" method="post" action="crudOpt/deletePage">
+                                           <div class="form-group">
+                                                 <label class="col-lg-4 control-label" for="#deleteTitle">Are you sure you want to delete?</label>
+                                                 <div class="col-lg-8">
+                                                     <input class="form-control" id="deleteTitle" name="Title" placeholder="Title" type="text" val="" readonly />
+                                                     <br />
+                                                 </div>
+
+                                                 <label class="col-lg-8 control-label" ></label>
+                                                 <div class="col-lg-4">
+                                                   <input class="btn btn-primary pull-right" type="submit" value="OK" name="submit" />
+                                                   <br />
+                                              </div>
+                                           </div><!-- Form Group -->
+                                     </form>
+                               </div> <!-- End Modal Body -->
+
+                               <div class="modal-footer">
+                                   <!-- <button class="btn btn-default"  type="button">Submit</button> -->
+                                   <button class="btn btn-default" data-dismiss="modal" type="button">Close</button>
+                               </div> <!-- End Modal Footer -->
+
+                             </div> <!-- End Modal Content -->
+                       </div> <!-- End Modal Dialog -->
+                     </div> <!-- End myModal -->
+
+						<!-- col-mod-6 end -->
+          </div>
+					<!-- row end -->
+				</div>
+			</div>
+
+      <hr>
+
+			<div class="row">
+				<div class="col-md-6">
+					<div class="row">
+						<div class="col-md-12">
+							 <a id="createButton" href="#createForm" role="button" class="btn btn-primary" data-toggle="modal"> Create New <em class="glyphicon glyphicon-plus"> </em></a>
+
+               <!-- Create Modal -->
+
+               <div class="modal fade" id="createForm">
+                   <div class="modal-dialog">
+                       <div class="modal-content">
+                           <div class="modal-header">
+                                 <button class="close" data-dismiss="modal">&times; </button>
+                                 <h2 class="modal-title">Insert Movie Details</h2>
+                           </div> <!-- End Modal Header  -->
+
+                           <div class="modal-body">
+
+                             <form class="form-horizontal" method="post" action="crudOpt/add" name="addForm" onsubmit="return validate_create_form();" >
+                                     <div class="form-group">
+                                           <label class="col-lg-2 control-label" for="#inputTitle">Title</label>
+                                           <div class="col-lg-10">
+                                               <input class="form-control" id="inputTitle" name="Title" placeholder="Title" type="text" />
+                                               <br />
+                                           </div>
+
+                                           <label class="col-lg-2 control-label" for="#inputYear">Year</label>
+                                           <div class="col-lg-10">
+                                               <input class="form-control" id="inputYear" name="Year" placeholder="Year" type="text" />
+                                               <br />
+                                           </div>
+
+                                           <label class="col-lg-2 control-label" for="#inputActors">Actors</label>
+                                           <div class="col-lg-10">
+                                               <input class="form-control" id="inputActors" name="Actors" placeholder="Actors" type="text" />
+                                               <br />
+                                           </div>
+
+                                           <label class="col-lg-2 control-label" for="#inputDirector">Director</label>
+                                           <div class="col-lg-10">
+                                               <input class="form-control" id="inputDirector" name="Director" placeholder="Director" type="text" />
+                                               <br />
+                                           </div>
+
+
+                                           <label class="col-lg-2 control-label" for="#inputReleased">Released on</label>
+                                           <div class="col-lg-10">
+                                               <input class="form-control" id="inputReleased" name="Released" placeholder="Released on" type="text" />
+                                               <br />
+                                           </div>
+
+                                           <label class="col-lg-2 control-label" for="#inputPlot">Plot</label>
+                                           <div class="col-lg-10">
+                                               <textarea class="form-control" id="inputPlot" name="Plot" placeholder="Plot"></textarea>
+                                               <br />
+                                           </div>
+
+
+                                           <label class="col-lg-2 control-label" for="#inputRating">Rating</label>
+                                           <div class="col-lg-10">
+                                               <input class="form-control" id="inputRating" name="Rating" placeholder="Rating" type="text" />
+                                               <br />
+                                           </div>
+
+                                           <label class="col-lg-2 control-label" for="#inputAwards">Awards</label>
+                                           <div class="col-lg-10">
+                                               <input class="form-control" id="inputAwards" name="Awards" placeholder="Awards &amp; Nominations" type="text" />
+                                               <br />
+                                           </div>
+
+                                           <label class="col-lg-2 control-label" for="#inputImage">Upload Image</label>
+                                           <div class="col-lg-10">
+                                                  <input type="file"  class="form-control" id="inputImage" name="imageurl"/>
+                                                  <br />
+                                           </div>
+
+                                           <label class="col-lg-8 control-label" ></label>
+                                           <div class="col-lg-4">
+                                               <input class="btn btn-primary" type="submit" value="Submit" name="submit" />
+                                               <br />
+                                           </div>
+                                     </div><!-- Form Group -->
+                             </form>
+                           </div> <!-- End Modal Body -->
+
+                           <div class="modal-footer">
+                               <!-- <button class="btn btn-default"  type="button">Submit</button> -->
+                               <button class="btn btn-default" data-dismiss="modal" type="button">Close</button>
+                           </div> <!-- End Modal Footer -->
+
+                       </div> <!-- End Modal Content -->
+                   </div> <!-- End Modal Dialog -->
+               </div> <!-- End myModal -->
+
+
+
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="btn-group pull-right">
+
+						<button class="btn btn-default" type="button" id="prev">
+							<em class="glyphicon glyphicon-chevron-left"></em> Prev
+						</button>
+
+						<button class="btn btn-default" type="button" id="next">
+							Next <em class="glyphicon glyphicon-chevron-right"></em>
+						</button>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+    <script src="javascripts/jquery.min.js"></script>
+    <script src="javascripts/bootstrap.min.js"></script>
+    <script src="javascripts/scripts.js"></script>
+    <script type="text/javascript">
+       $(function(){
+
+
+         var jsonObj;
+
+
+
+
+         $.ajax({
+           url:'/getJSON',
+
+           success: function(data) {
+            // jsonObj = JSON.parse(data);
+            jsonObj = data;
+           var i = 0;
+           var jsonLength = jsonObj.length;
+
+           create(jsonObj[0]);
+          // console.log(jsonObj, jsonObj[0]);
+
+          // Read JSON file and Load into HTML
+
+           function create(jsonObj){
+
+             $('li#name').empty().append("<h1>" + jsonObj.Title + "</h1><hr>");
+             $('li#year').empty().append("Year : " + jsonObj.Year);
+             $('li#actors').empty().append("Actors : " + jsonObj.Actors);
+             $('li#director').empty().append("Director : " + jsonObj.Director);
+             $('li#plot').empty().append("Plot : " + jsonObj.Plot);
+             $('li#release').empty().append("Release : " + jsonObj.Released);
+             $('li#rating').empty().append("Rating : " + jsonObj.imdbRating);
+             $('li#awards').empty().append("Awards &amp; Nominations : " + jsonObj.Awards);
+             $('#movieImage').attr('src', jsonObj.Poster);
+
+             // To disable Prev button on first page
+             if(i === 0){
+               $('button#prev').attr("disabled", "disabled");
+             }
+
+             // To disable Next button on last page
+             if(i == jsonLength-1){
+               $('button#next').attr("disabled", "disabled");
+             }
+
+           }
+           // To get the Next Movie details
+           $('button#next').on('click', function() {
+             i = i+1;
+
+             // To enable the Prev Button
+             $('button#prev').removeAttr("disabled");
+             create(jsonObj[i]);
+           });
+
+           // To get the Previous Movie details
+           $('button#prev').on('click', function(){
+             i=i-1;
+
+             // To enable the Next Button
+             $('button#next').removeAttr("disabled");
+             create(jsonObj[i]);
+
+           });
+
+           // Getting the Movie title into the Update Form
+           $('#updateButton').on('click', function(){
+             $('#updateTitle').val($('li#name').text());
+           });
+
+           // Getting the Movie Title into the Delete Form
+           $('#deleteButton').on('click', function () {
+             $('#deleteTitle').val($('li#name').text());
+           });
+
+          //  // Confirming the movie to be deleted and passing the title as parameter
+          //  $('#deleteOK').on('click', function () {
+          //    var deleteTitle = $('#deleteTitle').val();
+          //    console.log(deleteTitle);
+          //    $.ajax({
+          //      method: 'post',
+          //      url: 'deletePage/' + deleteTitle,
+          //      success: function(result){
+          //        console.log(result);
+          //        $.ajax({
+          //          method: 'get',
+          //          url: '/',
+          //          success: function(result){
+          //            console.log('Redirected to home page: '+result);
+          //          }
+          //        });
+          //      }
+          //    });
+          //  });
+
+           // every function goes above this
+           } // end of success: function()
+         });
+
+       });
+    </script>
+  </body>
+</html>
